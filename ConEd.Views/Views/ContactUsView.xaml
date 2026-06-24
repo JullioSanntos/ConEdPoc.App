@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ConEd.Views.Views.ManagePage"
+             x:Class="ConEd.Views.Views.ContactUsView"
              BackgroundColor="#F0F4F8"
-             Title="Manage">
+             Title="Contact Us">
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Manage Account Screen" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+        <Label Text="Contact Us Screen" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
         <Label Text="Temporary Placeholder" HorizontalOptions="Center" TextColor="Gray"/>
     </VerticalStackLayout>
 

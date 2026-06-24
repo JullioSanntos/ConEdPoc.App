@@ -71,19 +71,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\ContactPage.xaml">
+	  <Compile Update="Views\ContactUsView.xaml.cs">
+	    <DependentUpon>ContactUsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ManageView.xaml.cs">
+	    <DependentUpon>ManageView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\OutageView.xaml.cs">
+	    <DependentUpon>OutageView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PayMyBillView.xaml.cs">
+	    <DependentUpon>PayMyBillView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\UsageView.xaml.cs">
+	    <DependentUpon>UsageView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\ContactUsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ManagePage.xaml">
+	  <MauiXaml Update="Views\ManageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\OutagePage.xaml">
+	  <MauiXaml Update="Views\OutageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PayBillPage.xaml">
+	  <MauiXaml Update="Views\PayMyBillView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\UsagePage.xaml">
+	  <MauiXaml Update="Views\UsageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
