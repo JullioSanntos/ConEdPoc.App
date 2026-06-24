@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="ConEd.Views.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ConEd.Views"
-    Title="ConEd.Views">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="using:ConEd.Views.Views"
+       x:Class="ConEd.Views.AppShell"
+       Shell.FlyoutBehavior="Disabled">
+    <!--xmlns:views="clr-namespace:ConEd.Views"-->
+    <TabBar>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        <Tab Title="Pay My Bill">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF01C1;" Color="#1E88E5"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:PayBillPage}" />
+        </Tab>
+
+        <Tab Title="Usage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF041F;" Color="Gray"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:UsagePage}" />
+        </Tab>
+
+        <Tab Title="Manage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF08BB;" Color="Gray"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:ManagePage}" />
+        </Tab>
+
+        <Tab Title="Outage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF0243;" Color="Gray"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:OutagePage}" />
+        </Tab>
+
+        <Tab Title="Contact Us">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF1182;" Color="Gray"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:ContactPage}" />
+        </Tab>
+
+    </TabBar>
 
 </Shell>

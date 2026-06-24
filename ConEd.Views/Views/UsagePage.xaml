@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConEd.Views.Views.UsagePage"
+             BackgroundColor="#F0F4F8"
+             Title="Usage">
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Usage Analytics Screen" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+        <Label Text="Temporary Placeholder" HorizontalOptions="Center" TextColor="Gray"/>
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -9,6 +9,7 @@ namespace ConEd.Views {
                 .ConfigureFonts(fonts => {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("MaterialDesignIconsDesktop.ttf", "MaterialIcons");
                 });
 
 #if DEBUG
