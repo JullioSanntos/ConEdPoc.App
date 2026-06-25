@@ -84,6 +84,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\TabItem.xaml.cs">
+	    <DependentUpon>TabItem.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ContactUsMenuView.xaml.cs">
 	    <DependentUpon>ContactUsMenuView.xaml</DependentUpon>
 	  </Compile>
@@ -102,6 +105,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\TabItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ContactUsMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

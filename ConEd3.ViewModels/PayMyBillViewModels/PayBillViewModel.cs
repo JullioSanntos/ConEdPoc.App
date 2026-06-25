@@ -4,6 +4,6 @@ using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ConEd3.ViewModels.PayMyBillViewModels {
-    public class PayBillViewModel : ObservableObject {
+    public partial class PayBillViewModel : ObservableObject {
     }
 }
