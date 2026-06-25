@@ -3,7 +3,7 @@
 namespace ConEd.Views.Controls.AttachedProperties;
 
 public static class RegionManager {
-    private static readonly Dictionary<Type, Type> _viewRegistry = new();
+    private static readonly Dictionary<Type, Type> _viewRegistry = [];
 
     public static void Register<TViewModel, TView>() where TView : View {
         _viewRegistry[typeof(TViewModel)] = typeof(TView);
