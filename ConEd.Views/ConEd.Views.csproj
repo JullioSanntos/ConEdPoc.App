@@ -71,6 +71,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\ConEd3.ViewModels\ConEd3.ViewModels.csproj" />
+	  <ProjectReference Include="..\ConEd5.Models\ConEd5.Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\ContactUsView.xaml.cs">
 	    <DependentUpon>ContactUsView.xaml</DependentUpon>
 	  </Compile>
@@ -99,6 +104,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PayMyBillView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PayMyBillViews\BillHistoryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PayMyBillViews\CurrentBillView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PayMyBillViews\PayBillView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UsageView.xaml">
