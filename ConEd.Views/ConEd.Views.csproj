@@ -25,7 +25,7 @@
 		     For individual files, you can override by setting Inflator metadata:
 		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)
 		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->
-		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+		<!--<MauiXamlInflator>SourceGen</MauiXamlInflator>-->
 
 		<!-- Display name -->
 		<ApplicationTitle>ConEd.Views</ApplicationTitle>
@@ -87,6 +87,9 @@
 	  <Compile Update="Controls\TabItem.xaml.cs">
 	    <DependentUpon>TabItem.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\AppHeaderView.xaml.cs">
+	    <DependentUpon>AppHeaderView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ContactUsMenuView.xaml.cs">
 	    <DependentUpon>ContactUsMenuView.xaml</DependentUpon>
 	  </Compile>
@@ -106,6 +109,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\TabItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AppHeaderView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ContactUsMenuView.xaml">

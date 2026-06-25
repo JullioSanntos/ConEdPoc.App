@@ -2,9 +2,107 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConEd3.ViewModels.PayMyBillViewModels;assembly=ConEd3.ViewModels"
              x:Class="ConEd.Views.Views.PayMyBillViews.PayBillView"
-             x:DataType="vm:PayBillViewModel">
+             x:DataType="vm:PayBillViewModel"
+             BackgroundColor="White">
 
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Payment Screen Active" FontSize="24" TextColor="#E6A800" />
-    </VerticalStackLayout>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout>
+
+            <!-- ========================================== -->
+            <!-- 1. THE BLUE PAYMENT HEADER                 -->
+            <!-- ========================================== -->
+            <VerticalStackLayout BackgroundColor="#0072C6" Margin="20" Padding="20,25">
+
+                <Label Text="$198.82" FontSize="48" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,5,0,20">
+                    <Label Text="Balance due " TextColor="White" FontSize="14" VerticalOptions="Center" />
+                    <Label Text="August 19" TextColor="White" FontAttributes="Bold" FontSize="14" VerticalOptions="Center" />
+                    <Label Text="ⓘ" TextColor="White" FontSize="16" VerticalOptions="Center" Margin="5,0,0,0" />
+                </HorizontalStackLayout>
+
+                <BoxView HeightRequest="1" Color="White" Opacity="0.2" Margin="30,0,30,15" />
+
+                <Label Text="VIEW BILL" TextColor="White" FontAttributes="Bold" TextDecorations="Underline" HorizontalOptions="Center" FontSize="14" />
+            </VerticalStackLayout>
+
+            <!-- ========================================== -->
+            <!-- 2. THE PAYMENT FORM REGION                 -->
+            <!-- ========================================== -->
+            <VerticalStackLayout Padding="20,0,20,40" Spacing="15">
+
+                <!-- Form Title -->
+                <VerticalStackLayout Spacing="5" Margin="0,0,0,10">
+                    <Label Text="How do you want to pay?" FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="All fields are required, unless otherwise noted." FontSize="14" TextColor="#4A4A4A" />
+                </VerticalStackLayout>
+
+                <!-- Payment Method ComboBox -->
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="PAYMENT METHOD" FontSize="12" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,5" />
+                    <Grid>
+                        <!-- Relying entirely on the native Android underline -->
+                        <Picker TextColor="#1A1A1A" FontSize="16" BackgroundColor="Transparent" Title="Select Method" HorizontalOptions="Fill">
+                            <Picker.Items>
+                                <x:String>Bank Account (Checking)</x:String>
+                                <x:String>Bank Account (Savings)</x:String>
+                                <x:String>Credit/Debit Card</x:String>
+                            </Picker.Items>
+                            <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                        </Picker>
+
+                        <!-- The ComboBox Chevron Arrow -->
+                        <Label Text="∨" 
+                               TextColor="#1A1A1A" 
+                               FontSize="16" 
+                               FontAttributes="Bold"
+                               HorizontalOptions="End" 
+                               VerticalOptions="Center" 
+                               Margin="0,0,5,0"
+                               InputTransparent="True" />
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Account Type Radio Buttons -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="SELECT ACCOUNT TYPE" FontSize="12" FontAttributes="Bold" TextColor="Black" />
+
+                    <HorizontalStackLayout Spacing="30">
+                        <RadioButton Content="Checking" IsChecked="True" TextColor="Black" />
+                        <RadioButton Content="Savings" TextColor="Black" />
+                    </HorizontalStackLayout>
+
+                    <!-- Radio buttons do not have native underlines, so we keep this one -->
+                    <BoxView HeightRequest="1" Color="#F0F0F0" Margin="0,5,0,0" />
+                </VerticalStackLayout>
+
+                <!-- Routing Number Entry -->
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="ROUTING / ABA NUMBER" FontSize="12" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,5" />
+
+                    <!-- Grid and BoxView removed: using native underline only -->
+                    <Entry Text="011000099" 
+                           Keyboard="Numeric" 
+                           TextColor="#1A1A1A" 
+                           FontSize="16" 
+                           BackgroundColor="Transparent" />
+                </VerticalStackLayout>
+
+                <!-- Bank Account Number Entry -->
+                <VerticalStackLayout Spacing="0" Margin="0,5,0,0">
+                    <Label Text="BANK ACCOUNT NUMBER" FontSize="12" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,5" />
+
+                    <!-- Grid and BoxView removed: using native underline only -->
+                    <Entry Placeholder="Enter account number" 
+                           PlaceholderColor="#888888"
+                           Keyboard="Numeric" 
+                           TextColor="#1A1A1A" 
+                           FontSize="16" 
+                           BackgroundColor="Transparent" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>

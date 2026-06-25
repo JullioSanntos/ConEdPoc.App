@@ -29,7 +29,8 @@
 
         <BoxView x:Name="ActiveIndicator" 
                  HeightRequest="4" 
-                 Color="Transparent" 
+                 Color="White" 
+                 Opacity="0"
                  CornerRadius="2" />
 
         <VerticalStackLayout.GestureRecognizers>
@@ -38,11 +39,10 @@
         </VerticalStackLayout.GestureRecognizers>
 
         <VerticalStackLayout.Triggers>
-            <DataTrigger TargetType="VerticalStackLayout" 
-                         Binding="{Binding Source={x:Reference RootControl}, Path=IsActive}" Value="True">
+            <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding Source={x:Reference RootControl}, Path=IsActive}" Value="True">
                 <Setter TargetName="TabLabel" Property="Label.TextColor" Value="White" />
                 <Setter TargetName="TabLabel" Property="Label.FontAttributes" Value="Bold" />
-                <Setter TargetName="ActiveIndicator" Property="BoxView.Color" Value="White" />
+                <Setter TargetName="ActiveIndicator" Property="BoxView.Opacity" Value="1" />
             </DataTrigger>
         </VerticalStackLayout.Triggers>
 

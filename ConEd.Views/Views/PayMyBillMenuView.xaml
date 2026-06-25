@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConEd3.ViewModels;assembly=ConEd3.ViewModels"
              xmlns:controls="using:ConEd.Views.Controls"
+             xmlns:views="using:ConEd.Views.Views"
              xmlns:attached="using:ConEd.Views.Controls.AttachedProperties"
              x:Class="ConEd.Views.Views.PayMyBillMenuView"
              x:DataType="vm:PayMyBillMenuViewModel"
@@ -10,26 +11,32 @@
 
     <Grid RowDefinitions="Auto, *">
 
-        <ScrollView Grid.Row="0" Orientation="Horizontal" BackgroundColor="#0072C6" HorizontalScrollBarVisibility="Never">
-            <HorizontalStackLayout Padding="20,20,20,0" Spacing="20">
+        <VerticalStackLayout Grid.Row="0" BackgroundColor="#0072C6" Padding="0,20,0,0">
 
-                <controls:TabItem Title="CURRENT BILL"
-                                  Command="{Binding SwitchTabCommand}"
-                                  CommandParameter="{x:Static vm:PayMyBillMenuViewModel.CurrentBillRoute}"
-                                  IsActive="{Binding IsCurrentBillActive}" />
+            <views:AppHeaderView />
 
-                <controls:TabItem Title="BILL HISTORY"
-                                  Command="{Binding SwitchTabCommand}"
-                                  CommandParameter="{x:Static vm:PayMyBillMenuViewModel.BillHistoryRoute}"
-                                  IsActive="{Binding IsBillHistoryActive}" />
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Padding="20,0,20,0" Spacing="20">
 
-                <controls:TabItem Title="PAYMENT"
-                                  Command="{Binding SwitchTabCommand}"
-                                  CommandParameter="{x:Static vm:PayMyBillMenuViewModel.PayBillRoute}"
-                                  IsActive="{Binding IsPayBillActive}" />
+                    <controls:TabItem Title="CURRENT BILL"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:PayMyBillMenuViewModel.CurrentBillRoute}"
+                                      IsActive="{Binding IsCurrentBillActive}" />
 
-            </HorizontalStackLayout>
-        </ScrollView>
+                    <controls:TabItem Title="BILL HISTORY"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:PayMyBillMenuViewModel.BillHistoryRoute}"
+                                      IsActive="{Binding IsBillHistoryActive}" />
+
+                    <controls:TabItem Title="PAYMENT"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:PayMyBillMenuViewModel.PayBillRoute}"
+                                      IsActive="{Binding IsPayBillActive}" />
+
+                </HorizontalStackLayout>
+            </ScrollView>
+
+        </VerticalStackLayout>
 
         <ContentView Grid.Row="1" attached:RegionManager.ViewModel="{Binding ActiveViewModel}" />
 
