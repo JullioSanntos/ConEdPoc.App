@@ -66,6 +66,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="MainPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="MainPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
@@ -76,34 +84,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\ContactUsView.xaml.cs">
-	    <DependentUpon>ContactUsView.xaml</DependentUpon>
+	  <Compile Update="Views\ContactUsMenuView.xaml.cs">
+	    <DependentUpon>ContactUsMenuView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ManageView.xaml.cs">
-	    <DependentUpon>ManageView.xaml</DependentUpon>
+	  <Compile Update="Views\ManageMenuView.xaml.cs">
+	    <DependentUpon>ManageMenuView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\OutageView.xaml.cs">
-	    <DependentUpon>OutageView.xaml</DependentUpon>
+	  <Compile Update="Views\OutageMenuView.xaml.cs">
+	    <DependentUpon>OutageMenuView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PayMyBillView.xaml.cs">
-	    <DependentUpon>PayMyBillView.xaml</DependentUpon>
+	  <Compile Update="Views\PayMyBillMenuView.xaml.cs">
+	    <DependentUpon>PayMyBillMenuView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\UsageView.xaml.cs">
-	    <DependentUpon>UsageView.xaml</DependentUpon>
+	  <Compile Update="Views\UsageMenuView.xaml.cs">
+	    <DependentUpon>UsageMenuView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\ContactUsView.xaml">
+	  <MauiXaml Update="Views\ContactUsMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ManageView.xaml">
+	  <MauiXaml Update="Views\ManageMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\OutageView.xaml">
+	  <MauiXaml Update="Views\OutageMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PayMyBillView.xaml">
+	  <MauiXaml Update="Views\PayMyBillMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PayMyBillViews\BillHistoryView.xaml">
@@ -115,7 +123,7 @@
 	  <MauiXaml Update="Views\PayMyBillViews\PayBillView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\UsageView.xaml">
+	  <MauiXaml Update="Views\UsageMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

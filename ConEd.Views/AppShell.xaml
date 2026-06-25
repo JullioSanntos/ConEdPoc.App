@@ -11,35 +11,35 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF01C1;" Color="#1E88E5"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:PayMyBillView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:PayMyBillMenuView}" />
         </Tab>
 
         <Tab Title="Usage">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF041F;" Color="Gray"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:UsageView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:UsageMenuView}" />
         </Tab>
 
         <Tab Title="Manage">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF08BB;" Color="Gray"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:ManageView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:ManageMenuView}" />
         </Tab>
 
         <Tab Title="Outage">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF0243;" Color="Gray"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:OutageView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:OutageMenuView}" />
         </Tab>
 
         <Tab Title="Contact Us">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF1182;" Color="Gray"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:ContactUsView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:ContactUsMenuView}" />
         </Tab>
 
     </TabBar>
