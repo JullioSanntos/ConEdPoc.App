@@ -4,4 +4,5 @@
   </Project>
   <Project Path="ConEd3.ViewModels/ConEd3.ViewModels.csproj" />
   <Project Path="ConEd5.Models/ConEd5.Models.csproj" />
+  <Project Path="ConEd8.Infrastructure/ConEd8.Infrastructure.csproj" />
 </Solution>

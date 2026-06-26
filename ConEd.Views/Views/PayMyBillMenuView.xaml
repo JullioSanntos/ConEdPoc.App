@@ -5,8 +5,8 @@
              xmlns:views="using:ConEd.Views.Views"
              xmlns:attached="using:ConEd.Views.Controls.AttachedProperties"
              x:Class="ConEd.Views.Views.PayMyBillMenuView"
-             x:DataType="vm:PayMyBillMenuViewModel"
              Shell.NavBarIsVisible="False"
+             BindingContext="{Binding Source={StaticResource MainVM}, Path=PayMyBillMenuViewModel}"
              BackgroundColor="#F0F4F8">
 
     <Grid RowDefinitions="Auto, *">

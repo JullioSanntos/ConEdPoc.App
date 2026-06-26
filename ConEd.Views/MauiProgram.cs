@@ -2,6 +2,7 @@
 using ConEd.Views.Views.PayMyBillViews;
 using ConEd3.ViewModels;
 using ConEd3.ViewModels.PayMyBillViewModels;
+using ConEd8.Infrastructure;
 using Microsoft.Extensions.Logging;
 
 namespace ConEd.Views {
@@ -23,8 +24,14 @@ namespace ConEd.Views {
             RegionManager.Register<CurrentBillViewModel, CurrentBillView>();
             RegionManager.Register<BillHistoryViewModel, BillHistoryView>();
             RegionManager.Register<PayBillViewModel, PayBillView>();
+            builder.Services.AddTransient<ConEd3.ViewModels.MainViewModel>();
 
-            return builder.Build();
+            var app = builder.Build();
+
+            //Pass the built service provider into your locator
+            ServiceLocator.Initialize(app.Services);
+
+            return app;
         }
     }
 }

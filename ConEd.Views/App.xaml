@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ConEd.Views"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels;assembly=ConEd3.ViewModels"
              x:Class="ConEd.Views.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,8 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <x:Static x:Key="MainVM" Member="vm:MainViewModel.Instance" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -30,4 +30,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\ConEd8.Infrastructure\ConEd8.Infrastructure.csproj" />
+	</ItemGroup>
+
 </Project>

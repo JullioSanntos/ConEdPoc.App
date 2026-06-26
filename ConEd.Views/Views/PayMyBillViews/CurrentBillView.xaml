@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConEd3.ViewModels.PayMyBillViewModels;assembly=ConEd3.ViewModels"
              x:Class="ConEd.Views.Views.PayMyBillViews.CurrentBillView"
+             BindingContext="{Binding Source={StaticResource MainVM}, Path=PayMyBillMenuViewModel.CurrentBillVm}"
              x:DataType="vm:CurrentBillViewModel">
 
     <Grid RowDefinitions="Auto, *" BackgroundColor="#F0F4F8">
@@ -35,6 +36,7 @@
             </HorizontalStackLayout>
 
             <Button Text="Pay Bill" 
+                    Command="{Binding PayBillCommand}"
                     BackgroundColor="White" 
                     TextColor="#0072C6" 
                     FontAttributes="Bold" 

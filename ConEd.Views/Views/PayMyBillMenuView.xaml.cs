@@ -7,10 +7,10 @@ public partial class PayMyBillMenuView : ContentPage
 	public PayMyBillMenuView()
 	{
 		InitializeComponent();
-		Loaded += PayMyBillMenuView_Loaded;	
+		//Loaded += PayMyBillMenuView_Loaded;	
     }
 
-    private void PayMyBillMenuView_Loaded(object? sender, EventArgs e) {
-        this.BindingContext = new PayMyBillMenuViewModel();
-    }
+    //private void PayMyBillMenuView_Loaded(object? sender, EventArgs e) {
+    //    this.BindingContext = new PayMyBillMenuViewModel();
+    //}
 }

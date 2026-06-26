@@ -25,7 +25,7 @@
 		     For individual files, you can override by setting Inflator metadata:
 		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)
 		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->
-		<!--<MauiXamlInflator>SourceGen</MauiXamlInflator>-->
+		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 
 		<!-- Display name -->
 		<ApplicationTitle>ConEd.Views</ApplicationTitle>
@@ -81,6 +81,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ConEd3.ViewModels\ConEd3.ViewModels.csproj" />
 	  <ProjectReference Include="..\ConEd5.Models\ConEd5.Models.csproj" />
+	  <ProjectReference Include="..\ConEd8.Infrastructure\ConEd8.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
