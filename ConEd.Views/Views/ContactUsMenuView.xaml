@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConEd.Views.Views.ContactUsMenuView"
              BackgroundColor="#F0F4F8"
+             BindingContext="{Binding Source={StaticResource MainVM}, Path=ContactUsMenuViewModel}"
              Title="Contact Us">
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">

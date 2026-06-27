@@ -1,0 +1,115 @@
+﻿<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels.UsageMenuViewModels;assembly=ConEd3.ViewModels"
+             xmlns:models="clr-namespace:ConEd5.Models;assembly=ConEd5.Models"
+             xmlns:drawables="clr-namespace:ConEd.Views.Drawables;assembly=ConEd.Views"
+             xmlns:converters="clr-namespace:ConEd.Views.Converters;assembly=ConEd.Views"
+             x:Class="ConEd.Views.Views.UsageMenuViews.UsageDetailView"
+             x:DataType="vm:UsageDetailViewModel"
+             BackgroundColor="#F0F4F8">
+    <ContentView.Resources>
+        <drawables:HatchPatternDrawable x:Key="HatchDrawable" />
+        <converters:BarValueToRowsConverter x:Key="BarValueToRowsConverter" />
+    </ContentView.Resources>
+    <Grid RowDefinitions="Auto, *">
+        <VerticalStackLayout Grid.Row="0">
+            <Border BackgroundColor="White" StrokeThickness="0" Padding="20,15,20,20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="4" Opacity="0.05" />
+                </Border.Shadow>
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="Auto, *, Auto" Margin="0,0,0,15">
+                        <Label Grid.Column="0" Text="〈" FontSize="20" TextColor="#B0B0B0" FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding MacroDateRange}" FontSize="16" FontAttributes="Bold" TextColor="#1A1A1A" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="2" Text="〉" FontSize="20" TextColor="#E0E0E0" FontAttributes="Bold" VerticalOptions="Center"/>
+                    </Grid>
+                    <Border BackgroundColor="White" Stroke="#E0E0E0" StrokeThickness="1" Margin="0,0,0,25">
+                        <Grid>
+                            <Picker TextColor="#1A1A1A" FontSize="16" Margin="10,0" Title="Select Service" BackgroundColor="Transparent"
+                                    ItemsSource="{Binding AvailableServices}" SelectedItem="{Binding SelectedService}" />
+                            <Label Text="▼" TextColor="#666666" FontSize="12" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,15,0" InputTransparent="True" />
+                        </Grid>
+                    </Border>
+                    <Grid ColumnDefinitions="Auto, *, Auto">
+                        <Label Grid.Column="0" Text="〈" FontSize="28" TextColor="#D0D0D0" VerticalOptions="Center"/>
+                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="5">
+                            <Label Text="{Binding MicroDateRange}" FontSize="12" TextColor="#666666" HorizontalOptions="Center" />
+                            <Label Text="{Binding PeriodCost, StringFormat='${0:F2}'}" FontSize="42" TextColor="#666666" HorizontalOptions="Center" />
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,5,0,0">
+                                <Label Text="SEE DETAILS" FontSize="12" FontAttributes="Bold" TextColor="#00A3E0" VerticalOptions="Center" />
+                                <Label Text="▼" FontSize="10" TextColor="#00A3E0" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="〉" FontSize="28" TextColor="#F0F0F0" VerticalOptions="Center"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            <shapes:Polygon Points="0,0 24,0 12,12" Fill="White" HorizontalOptions="Center" Margin="0,-1,0,0" />
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" ColumnDefinitions="35, *" Margin="15,20,15,0">
+            <Grid Grid.Column="0" RowDefinitions="3*, 3*, 3*, 3*, 1*">
+                <Label Grid.Row="0" Text="$120" FontSize="11" TextColor="#888888" VerticalOptions="Start" HorizontalOptions="End" Margin="0,-6,5,0" />
+                <Label Grid.Row="1" Text="$90" FontSize="11" TextColor="#888888" VerticalOptions="Start" HorizontalOptions="End" Margin="0,-6,5,0" />
+                <Label Grid.Row="2" Text="$60" FontSize="11" TextColor="#888888" VerticalOptions="Start" HorizontalOptions="End" Margin="0,-6,5,0" />
+                <Label Grid.Row="3" Text="$30" FontSize="11" TextColor="#888888" VerticalOptions="Start" HorizontalOptions="End" Margin="0,-6,5,0" />
+                <Label Grid.Row="4" Text="$0" FontSize="11" TextColor="#888888" VerticalOptions="Start" HorizontalOptions="End" Margin="0,-6,5,0" />
+            </Grid>
+            <Grid Grid.Column="1" RowDefinitions="3*, 3*, 3*, 3*, 1*">
+                <BoxView Grid.Row="0" HeightRequest="1" Color="#DDE2E5" VerticalOptions="Start" />
+                <BoxView Grid.Row="1" HeightRequest="1" Color="#DDE2E5" VerticalOptions="Start" />
+                <BoxView Grid.Row="2" HeightRequest="1" Color="#DDE2E5" VerticalOptions="Start" />
+                <BoxView Grid.Row="3" HeightRequest="1" Color="#DDE2E5" VerticalOptions="Start" />
+                <BoxView Grid.Row="4" HeightRequest="1" Color="#A0A0A0" VerticalOptions="Start" />
+                <FlexLayout Grid.Row="0" Grid.RowSpan="4" Direction="Row" JustifyContent="SpaceBetween" AlignItems="Stretch" VerticalOptions="Fill" HorizontalOptions="Fill" BindableLayout.ItemsSource="{Binding ChartData}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:UsageDataPoint">
+                            <Grid WidthRequest="18" VerticalOptions="Fill" RowDefinitions="{Binding BarHeight, Converter={StaticResource BarValueToRowsConverter}}">
+                                <shapes:Rectangle Grid.Row="1">
+                                    <shapes:Rectangle.Style>
+                                        <Style TargetType="shapes:Rectangle">
+                                            <Setter Property="Fill" Value="#3CA0DE" />
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="shapes:Rectangle" Binding="{Binding IsEstimated}" Value="True">
+                                                    <Setter Property="Fill" Value="#8ED0F5" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </shapes:Rectangle.Style>
+                                </shapes:Rectangle>
+                                <GraphicsView Grid.Row="1" Drawable="{StaticResource HatchDrawable}" IsVisible="{Binding IsEstimated}" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <Path Grid.Row="0" Grid.RowSpan="4" Fill="Transparent" Stroke="#8E24AA" StrokeThickness="3" Aspect="Fill" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="9,0,9,0">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="0,0" />
+                            <PathFigure StartPoint="300,240" />
+                            <PathFigure StartPoint="0,110">
+                                <BezierSegment Point1="20,90" Point2="40,65" Point3="70,60" />
+                                <BezierSegment Point1="100,55" Point2="120,90" Point3="150,135" />
+                                <BezierSegment Point1="180,160" Point2="195,170" Point3="215,165" />
+                                <BezierSegment Point1="240,150" Point2="270,120" Point3="300,95" />
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Grid Grid.Row="0" Grid.RowSpan="4" RowDefinitions="95*, 145*">
+                    <Border Grid.Row="0" BackgroundColor="#8E24AA" WidthRequest="26" HeightRequest="26" VerticalOptions="End" HorizontalOptions="End">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="13" />
+                        </Border.StrokeShape>
+                        <Label Text="{Binding AverageTemperature, StringFormat='{0}°'}" TextColor="White" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="4" ColumnDefinitions="*, *, *" Margin="0,5,0,0">
+                    <Label Grid.Column="0" Text="May" FontSize="11" TextColor="#888888" HorizontalOptions="Start" />
+                    <Label Grid.Column="1" Text="Nov" FontSize="11" TextColor="#888888" HorizontalOptions="Center" />
+                    <Label Grid.Column="2" Text="May" FontSize="11" TextColor="#888888" HorizontalOptions="End" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentView>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -103,6 +103,9 @@
 	  <Compile Update="Views\PayMyBillMenuView.xaml.cs">
 	    <DependentUpon>PayMyBillMenuView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\UsageMenuViews\UsageDetailView.xaml.cs">
+	    <DependentUpon>UsageDetailView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\UsageMenuView.xaml.cs">
 	    <DependentUpon>UsageMenuView.xaml</DependentUpon>
 	  </Compile>
@@ -134,6 +137,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PayMyBillViews\PayBillView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UsageMenuViews\UsageDetailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UsageMenuView.xaml">

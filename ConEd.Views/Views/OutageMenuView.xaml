@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConEd.Views.Views.OutageMenuView"
              BackgroundColor="#F0F4F8"
+             BindingContext="{Binding Source={StaticResource MainVM}, Path=OutageMenuViewModel}"
              Title="Outage">
 
     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">

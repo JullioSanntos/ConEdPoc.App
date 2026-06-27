@@ -1,13 +1,44 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels;assembly=ConEd3.ViewModels"
+             xmlns:controls="using:ConEd.Views.Controls"
+             xmlns:views="using:ConEd.Views.Views"
+             xmlns:attached="using:ConEd.Views.Controls.AttachedProperties"
              x:Class="ConEd.Views.Views.UsageMenuView"
-             BackgroundColor="#F0F4F8"
-             Title="Usage">
+             x:DataType="vm:UsageMenuViewModel"
+             Shell.NavBarIsVisible="False"
+             BindingContext="{Binding Source={StaticResource MainVM}, Path=UsageMenuViewModel}"
+             BackgroundColor="#F0F4F8">
 
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Usage Analytics Screen" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Label Text="Temporary Placeholder" HorizontalOptions="Center" TextColor="Gray"/>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, *">
 
+        <VerticalStackLayout Grid.Row="0" BackgroundColor="#0072C6" Padding="0,20,0,0">
+
+            <views:AppHeaderView />
+
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Padding="20,0,20,0" Spacing="20">
+
+                    <controls:TabItem Title="BILLING"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:UsageMenuViewModel.BillingRoute}"
+                                      IsActive="{Binding IsBillingActive}" />
+
+                    <controls:TabItem Title="USAGE"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:UsageMenuViewModel.UsageDetailRoute}"
+                                      IsActive="{Binding IsUsageDetailActive}" />
+
+                    <controls:TabItem Title="SIMILAR HOMES"
+                                      Command="{Binding SwitchTabCommand}"
+                                      CommandParameter="{x:Static vm:UsageMenuViewModel.SimilarHomesRoute}"
+                                      IsActive="{Binding IsSimilarHomesActive}" />
+
+                </HorizontalStackLayout>
+            </ScrollView>
+        </VerticalStackLayout>
+
+        <ContentView Grid.Row="1" attached:RegionManager.ViewModel="{Binding ActiveViewModel}" />
+
+    </Grid>
 </ContentPage>

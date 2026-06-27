@@ -1,8 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using ConEd3.ViewModels.PayMyBillViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConEd3.ViewModels {
 
@@ -18,5 +14,4 @@ namespace ConEd3.ViewModels {
         public UsageMenuViewModel UsageMenuViewModel => field ??= new();
 
     }
-
 }
