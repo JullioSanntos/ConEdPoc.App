@@ -42,7 +42,7 @@ public partial class UsageDetailViewModel : BaseViewModel {
             new UsageDataPoint("Nov", 60, 120),
 
             new UsageDataPoint("Dec", 45, 90, true),
-            new UsageDataPoint("Jan", 40, 80, true),
+            new UsageDataPoint("Jan", 40, 80),
             new UsageDataPoint("Feb", 35, 70, true),
 
             new UsageDataPoint("Mar", 30, 60),

@@ -88,15 +88,15 @@
                             <PathFigure StartPoint="0,0" />
                             <PathFigure StartPoint="300,240" />
                             <PathFigure StartPoint="0,110">
-                                <BezierSegment Point1="20,90" Point2="40,65" Point3="70,60" />
-                                <BezierSegment Point1="100,55" Point2="120,90" Point3="150,135" />
-                                <BezierSegment Point1="180,160" Point2="195,170" Point3="215,165" />
-                                <BezierSegment Point1="240,150" Point2="270,120" Point3="300,95" />
+                                <BezierSegment Point1="15,95" Point2="35,65" Point3="60,60" />
+                                <BezierSegment Point1="85,55" Point2="120,85" Point3="150,120" />
+                                <BezierSegment Point1="175,135" Point2="200,150" Point3="225,155" />
+                                <BezierSegment Point1="245,150" Point2="270,100" Point3="300,65" />
                             </PathFigure>
                         </PathGeometry>
                     </Path.Data>
                 </Path>
-                <Grid Grid.Row="0" Grid.RowSpan="4" RowDefinitions="95*, 145*">
+                <Grid Grid.Row="0" Grid.RowSpan="4" RowDefinitions="65*, 175*">
                     <Border Grid.Row="0" BackgroundColor="#8E24AA" WidthRequest="26" HeightRequest="26" VerticalOptions="End" HorizontalOptions="End">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="13" />
