@@ -4,7 +4,21 @@
        xmlns:views="using:ConEd.Views.Views"
        x:Class="ConEd.Views.AppShell"
        Shell.FlyoutBehavior="Disabled">
-    <!--xmlns:views="clr-namespace:ConEd.Views"-->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+            </Style>
+
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+
+                <Setter Property="Shell.TabBarTitleColor" Value="#0072C6" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#0072C6" />
+
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#888888" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
     <TabBar>
 
         <Tab Title="Pay My Bill">
