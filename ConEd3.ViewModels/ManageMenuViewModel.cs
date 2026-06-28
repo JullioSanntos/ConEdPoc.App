@@ -45,12 +45,10 @@ public partial class ManageMenuViewModel : BaseViewModel {
 
     [RelayCommand]
     private void PayBill() {
-        // 1. Change the inner state of the target tab (No Messaging Center required!)
         MainViewModel.Instance.PayMyBillMenuViewModel.ActiveViewModel = MainViewModel.Instance.PayMyBillMenuViewModel.PayBillVm;
 
-        // 2. Tell the UI to physically switch the bottom tab
-        // (Ensure the route name matches your AppShell.xaml definition)
-        Microsoft.Maui.Controls.Shell.Current.GoToAsync("//PayMyBill");
+        // Global active tab (Triggers the Shell to navigate)
+        MainViewModel.Instance.ActiveGlobalTab = AppGlobalTab.PayMyBill;
     }
 
     [RelayCommand]

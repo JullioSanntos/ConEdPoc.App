@@ -13,5 +13,17 @@ namespace ConEd3.ViewModels {
         public PayMyBillMenuViewModel PayMyBillMenuViewModel => field ??= new();
         public UsageMenuViewModel UsageMenuViewModel => field ??= new();
 
+
+        [ObservableProperty]
+        public partial AppGlobalTab ActiveGlobalTab { get; set; }
+
+    }
+
+    public enum AppGlobalTab {
+        PayMyBill,
+        Usage,
+        Manage,
+        Outage,
+        ContactUs
     }
 }

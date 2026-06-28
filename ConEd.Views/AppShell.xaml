@@ -21,35 +21,35 @@
     </Shell.Resources>
     <TabBar>
 
-        <Tab Title="Pay My Bill">
+        <Tab x:Name="PayMyBillTab" Title="Pay My Bill">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF01C1;" Color="#1E88E5"/>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF01C1;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:PayMyBillMenuView}" />
         </Tab>
 
-        <Tab Title="Usage">
+        <Tab x:Name="UsageTab" Title="Usage">
             <Tab.Icon>
-                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF041F;" Color="Gray"/>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF041F;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:UsageMenuView}" />
         </Tab>
 
-        <Tab Title="Manage">
+        <Tab x:Name="ManageTab" Title="Manage">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF08BB;" Color="Gray"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:ManageMenuView}" />
         </Tab>
 
-        <Tab Title="Outage">
+        <Tab x:Name="OutageTab" Title="Outage">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF0243;" Color="Gray"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:OutageMenuView}" />
         </Tab>
 
-        <Tab Title="Contact Us">
+        <Tab x:Name="ContactUsTab" Title="Contact Us">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="&#xF1182;" Color="Gray"/>
             </Tab.Icon>
