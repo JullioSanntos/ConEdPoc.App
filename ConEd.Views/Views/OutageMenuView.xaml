@@ -1,14 +1,42 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels;assembly=ConEd3.ViewModels"
+             xmlns:views="using:ConEd.Views.Views"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:maps1="using:Microsoft.Maui.Maps"
              x:Class="ConEd.Views.Views.OutageMenuView"
-             BackgroundColor="#F0F4F8"
+             x:DataType="vm:OutageMenuViewModel"
+             Shell.NavBarIsVisible="False"
              BindingContext="{Binding Source={StaticResource MainVM}, Path=OutageMenuViewModel}"
-             Title="Outage">
+             BackgroundColor="White">
 
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Report Outage Screen" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Label Text="Temporary Placeholder" HorizontalOptions="Center" TextColor="Gray"/>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, Auto, *">
 
+        <VerticalStackLayout Grid.Row="0" BackgroundColor="#0072C6" Padding="0,20,0,0">
+            <views:AppHeaderView />
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*, *, *" BackgroundColor="#0072C6">
+            <VerticalStackLayout Grid.Column="0" Padding="0,15,0,0">
+                <Label Text="REPORT&#x0a;OUTAGE" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,0,0,10" />
+                <BoxView HeightRequest="4" Color="Transparent" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Padding="0,15,0,0">
+                <Label Text="CHECK&#x0a;STATUS" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,0,0,10"/>
+                <BoxView HeightRequest="4" Color="Transparent" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="2" Padding="0,15,0,0">
+                <Label Text="OUTAGE MAP" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,7,0,17"/>
+                <BoxView HeightRequest="4" Color="White" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <maps:Map x:Name="OutageMap" MapType="Street" IsShowingUser="False" />
+        </Grid>
+
+    </Grid>
 </ContentPage>

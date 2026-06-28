@@ -7,7 +7,7 @@ namespace ConEd.Views.Controls.AttachedProperties;
 
 public static class RegionManager {
     // =========================================================
-    // 1. YOUR EXISTING EXPLICIT REGISTRY
+    // Register your ViewModel-View pairs here for explicit routing. This is the preferred method.
     // =========================================================
     private static readonly Dictionary<Type, Type> _viewRegistry = new();
 
@@ -16,9 +16,7 @@ public static class RegionManager {
         _viewRegistry[typeof(TViewModel)] = typeof(TView);
     }
 
-    // =========================================================
-    // 2. THE ATTACHED PROPERTY
-    // =========================================================
+    // The attached property that will be used to bind the ViewModel to the ContentView
     public static readonly BindableProperty ViewModelProperty = BindableProperty.CreateAttached(
         propertyName: "ViewModel",
         returnType: typeof(object),
@@ -29,9 +27,7 @@ public static class RegionManager {
     public static object GetViewModel(BindableObject bindable) => bindable.GetValue(ViewModelProperty);
     public static void SetViewModel(BindableObject bindable, object value) => bindable.SetValue(ViewModelProperty, value);
 
-    // =========================================================
-    // 3. THE HYBRID ROUTING ENGINE
-    // =========================================================
+    // When ViewModel changes, we need to resolve the corresponding View and set it as the Content of the ContentView
     private static void OnViewModelChanged(BindableObject bindable, object oldValue, object newValue) {
         if (bindable is not ContentView contentView) return;
 
@@ -43,12 +39,12 @@ public static class RegionManager {
         Type viewModelType = newValue.GetType();
         Type? viewType = null;
 
-        // --- STEP A: Check Your Centralized Manifest First ---
+        // Check Your Centralized Manifest First. Configuration over convention ---
         if (_viewRegistry.TryGetValue(viewModelType, out Type? registeredType)) {
             viewType = registeredType;
         }
         else {
-            // --- STEP B: Fallback to Magic String Inference ---
+            // --- Fallback to Magic String Inference. Name convention fallback 
             string targetViewFullName = viewModelType.FullName!
                 .Replace("ViewModel", "View")
                 .Replace("ConEd3.", "ConEd.");
@@ -61,7 +57,7 @@ public static class RegionManager {
             }
         }
 
-        // --- STEP C: The Visual Fail-Safe ---
+        // Visual feedback for developers if the view type could not be resolved
         if (viewType == null) {
             contentView.Content = new VerticalStackLayout {
                 VerticalOptions = LayoutOptions.Center,
@@ -75,7 +71,7 @@ public static class RegionManager {
             return;
         }
 
-        // --- STEP D: Instantiation ---
+        // Instantiate the view and set its BindingContext to the new ViewModel
         try {
             if (Activator.CreateInstance(viewType) is View viewInstance) {
                 viewInstance.BindingContext = newValue;
