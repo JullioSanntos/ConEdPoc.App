@@ -18,6 +18,8 @@ public partial class OutageMenuView : ContentPage {
 
         // Render the custom service boundary polygon layer
         DrawServiceBoundary();
+
+        PlotOutagePins();
     }
 
     /// <summary>
@@ -43,5 +45,42 @@ public partial class OutageMenuView : ContentPage {
 
         // 3. Inject the constructed polygon layer directly into the native map surface
         OutageMap.MapElements.Add(territoryPolygon);
+    }
+
+    private void PlotOutagePins() {
+        var incidents = TerritoryData.GetActiveOutages();
+
+        foreach (var incident in incidents) {
+            // Create the native MAUI map pin
+            Pin outagePin = new Pin {
+                Label = $"Incident #{incident.IncidentId}", // Shows on first tap
+                Address = incident.ZipCodes,                // Acts as the "hover" address info
+                Type = PinType.Generic,
+                Location = incident.Coordinates
+            };
+
+            // Wire up the click event (Fires when the tooltip is tapped)
+            outagePin.InfoWindowClicked += (s, e) => {
+                ShowOutageDetails(incident);
+            };
+
+            OutageMap.Pins.Add(outagePin);
+        }
+    }
+
+    private void ShowOutageDetails(OutageIncident incident) {
+        // Populate the XAML popup labels with the specific incident data
+        PopupTitle.Text = $"Incident #{incident.IncidentId}";
+        PopupZips.Text = incident.ZipCodes;
+        PopupStreets.Text = incident.ImpactedStreets;
+        PopupETA.Text = incident.EstimatedRestoration;
+
+        // Reveal the overlay
+        OutageDetailsOverlay.IsVisible = true;
+    }
+
+    private void ClosePopup_Clicked(object sender, EventArgs e) {
+        // Hide the overlay
+        OutageDetailsOverlay.IsVisible = false;
     }
 }
