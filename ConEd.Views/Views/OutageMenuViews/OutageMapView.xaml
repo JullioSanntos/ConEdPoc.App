@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels.OutageMenuViewModels;assembly=ConEd3.ViewModels"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="ConEd.Views.Views.OutageMenuViews.OutageMapView"
+             x:DataType="vm:OutageMapViewModel">
+
+
+    <Grid BindingContext="{Binding Source={StaticResource MainVM}, Path=OutageMenuViewModel.OutageMapViewModel}">
+        <maps:Map x:Name="OutageMap" MapType="Street" IsShowingUser="False" />
+
+        <Grid x:Name="OutageDetailsOverlay" BackgroundColor="#99000000" IsVisible="False">
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="20" 
+                   HorizontalOptions="Center" VerticalOptions="Center" 
+                   WidthRequest="320" MaximumHeightRequest="400" HasShadow="True">
+
+                <Grid RowDefinitions="Auto, *, Auto">
+                    <Label x:Name="PopupTitle" Grid.Row="0" FontSize="20" FontAttributes="Bold" TextColor="#0072C6" Margin="0,0,0,10"/>
+
+                    <ScrollView Grid.Row="1" Margin="0,10,0,10">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Zip Codes Affected:" FontAttributes="Bold" FontSize="14"/>
+                            <Label x:Name="PopupZips" FontSize="14" TextColor="#555555" Margin="0,0,0,10"/>
+
+                            <Label Text="Impacted Streets:" FontAttributes="Bold" FontSize="14"/>
+                            <Label x:Name="PopupStreets" FontSize="14" TextColor="#555555" Margin="0,0,0,10"/>
+
+                            <Label Text="Estimated Restoration:" FontAttributes="Bold" FontSize="14"/>
+                            <Label x:Name="PopupETA" FontSize="14" TextColor="#D32F2F" FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+                    </ScrollView>
+
+                    <Button Grid.Row="2" Text="Close" BackgroundColor="#0072C6" TextColor="White" 
+                            CornerRadius="8" Clicked="ClosePopup_Clicked" Margin="0,10,0,0"/>
+                </Grid>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentView>

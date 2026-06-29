@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels.OutageMenuViewModels;assembly=ConEd3.ViewModels"
+             xmlns:models="clr-namespace:ConEd5.Models;assembly=ConEd5.Models"
+             x:Class="ConEd.Views.Views.OutageMenuViews.CheckStatusView"
+             x:DataType="vm:CheckStatusViewModel">
+   
+    <Grid BindingContext="{Binding Source={StaticResource MainVM}, Path=OutageMenuViewModel.CheckStatusViewModel}" 
+          BackgroundColor="#F4F4F4" RowDefinitions="Auto, *">
+
+        <Label Grid.Row="0" Text="Current Outage Status" FontSize="20" FontAttributes="Bold" TextColor="#333" Margin="20,20,20,10"/>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding ActiveIncidents}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:OutageIncident">
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="False" Margin="20,10,20,10" Padding="15">
+                        <Grid RowDefinitions="Auto, Auto, Auto, Auto">
+                            <HorizontalStackLayout Grid.Row="0" Spacing="10" Margin="0,0,0,10">
+                                <Label Text="{Binding IncidentId, StringFormat='Incident #{0}'}" FontAttributes="Bold" FontSize="16" TextColor="#333" VerticalOptions="Center"/>
+                                <Frame BackgroundColor="#E8F5E9" CornerRadius="4" Padding="8,4" HasShadow="False" IsVisible="{Binding IsConfirmed}">
+                                    <Label Text="Verified" TextColor="#2E7D32" FontSize="12" FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame BackgroundColor="#FFF3E0" CornerRadius="4" Padding="8,4" HasShadow="False" IsVisible="{Binding IsConfirmed, Converter={x:StaticResource InvertedBoolConverter}}">
+                                    <Label Text="User Reported" TextColor="#EF6C00" FontSize="12" FontAttributes="Bold"/>
+                                </Frame>
+                                <Label Text="{Binding VoteCount, StringFormat='({0} Reports)'}" TextColor="#888" FontSize="12" VerticalOptions="Center" IsVisible="{Binding IsConfirmed, Converter={x:StaticResource InvertedBoolConverter}}"/>
+                            </HorizontalStackLayout>
+                            <Label Grid.Row="1" Text="{Binding ZipCodes, StringFormat='Zips: {0}'}" FontSize="14" TextColor="#666" Margin="0,0,0,5"/>
+                            <Label Grid.Row="2" Text="{Binding ImpactedStreets}" FontSize="14" TextColor="#666" Margin="0,0,0,10"/>
+                            <HorizontalStackLayout Grid.Row="3" Spacing="5">
+                                <Label Text="ETA: " FontSize="14" FontAttributes="Bold" TextColor="#333"/>
+                                <Label Text="{Binding EstimatedRestoration}" FontSize="14" FontAttributes="Bold" TextColor="#D32F2F"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentView>

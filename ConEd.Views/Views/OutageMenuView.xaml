@@ -2,9 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConEd3.ViewModels;assembly=ConEd3.ViewModels"
              xmlns:views="using:ConEd.Views.Views"
-             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
-             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-             xmlns:maps1="using:Microsoft.Maui.Maps"
+             xmlns:subviews="using:ConEd.Views.Views.OutageMenuViews"
              x:Class="ConEd.Views.Views.OutageMenuView"
              x:DataType="vm:OutageMenuViewModel"
              Shell.NavBarIsVisible="False"
@@ -18,53 +16,73 @@
         </VerticalStackLayout>
 
         <Grid Grid.Row="1" ColumnDefinitions="*, *, *" BackgroundColor="#0072C6">
+
             <VerticalStackLayout Grid.Column="0" Padding="0,15,0,0">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwitchTabCommand}" CommandParameter="REPORT OUTAGE" />
+                </VerticalStackLayout.GestureRecognizers>
                 <Label Text="REPORT&#x0a;OUTAGE" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,0,0,10" />
-                <BoxView HeightRequest="4" Color="Transparent" />
+
+                <BoxView HeightRequest="4">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsReportOutageVisible}" Value="True">
+                            <Setter Property="Color" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsReportOutageVisible}" Value="False">
+                            <Setter Property="Color" Value="Transparent" />
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1" Padding="0,15,0,0">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwitchTabCommand}" CommandParameter="CHECK STATUS" />
+                </VerticalStackLayout.GestureRecognizers>
                 <Label Text="CHECK&#x0a;STATUS" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,0,0,10"/>
-                <BoxView HeightRequest="4" Color="Transparent" />
+
+                <BoxView HeightRequest="4">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsCheckStatusVisible}" Value="True">
+                            <Setter Property="Color" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsCheckStatusVisible}" Value="False">
+                            <Setter Property="Color" Value="Transparent" />
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="2" Padding="0,15,0,0">
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwitchTabCommand}" CommandParameter="OUTAGE MAP" />
+                </VerticalStackLayout.GestureRecognizers>
                 <Label Text="OUTAGE MAP" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,7,0,17"/>
-                <BoxView HeightRequest="4" Color="White" />
+
+                <BoxView HeightRequest="4">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsOutageMapVisible}" Value="True">
+                            <Setter Property="Color" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding IsOutageMapVisible}" Value="False">
+                            <Setter Property="Color" Value="Transparent" />
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
             </VerticalStackLayout>
         </Grid>
 
         <Grid Grid.Row="2">
-            <maps:Map x:Name="OutageMap" MapType="Street" IsShowingUser="False" />
+            <!--this subview can not be invisible due to the map control
+        , or it will create performance problems-->
+            <subviews:OutageMapView />
+
+            <subviews:CheckStatusView IsVisible="{Binding IsCheckStatusVisible}" />
+            <subviews:ReportOutageView IsVisible="{Binding IsReportOutageVisible}" />
+
         </Grid>
 
-        <Grid x:Name="OutageDetailsOverlay" Grid.RowSpan="3" BackgroundColor="#99000000" IsVisible="False">
-            <Frame BackgroundColor="White" CornerRadius="12" Padding="20" 
-                   HorizontalOptions="Center" VerticalOptions="Center" 
-                   WidthRequest="320" MaximumHeightRequest="400" HasShadow="True">
 
-                <Grid RowDefinitions="Auto, *, Auto">
-                    <Label x:Name="PopupTitle" Grid.Row="0" Text="Outage Details" 
-                           FontSize="20" FontAttributes="Bold" TextColor="#0072C6" Margin="0,0,0,10"/>
-
-                    <ScrollView Grid.Row="1" Margin="0,10,0,10">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="Zip Codes Affected:" FontAttributes="Bold" FontSize="14"/>
-                            <Label x:Name="PopupZips" FontSize="14" TextColor="#555555" Margin="0,0,0,10"/>
-
-                            <Label Text="Impacted Streets:" FontAttributes="Bold" FontSize="14"/>
-                            <Label x:Name="PopupStreets" FontSize="14" TextColor="#555555" Margin="0,0,0,10"/>
-
-                            <Label Text="Estimated Restoration:" FontAttributes="Bold" FontSize="14"/>
-                            <Label x:Name="PopupETA" FontSize="14" TextColor="#D32F2F" FontAttributes="Bold"/>
-                        </VerticalStackLayout>
-                    </ScrollView>
-
-                    <Button Grid.Row="2" Text="Close" BackgroundColor="#0072C6" TextColor="White" 
-                            CornerRadius="8" Clicked="ClosePopup_Clicked" Margin="0,10,0,0"/>
-                </Grid>
-            </Frame>
-        </Grid>
 
     </Grid>
 </ContentPage>

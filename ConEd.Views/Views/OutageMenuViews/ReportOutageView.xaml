@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ConEd3.ViewModels.OutageMenuViewModels;assembly=ConEd3.ViewModels"
+             x:Class="ConEd.Views.Views.OutageMenuViews.ReportOutageView"
+             x:DataType="vm:ReportOutageViewModel">
+
+    <ScrollView BindingContext="{Binding Source={StaticResource MainVM}, Path=OutageMenuViewModel.ReportOutageViewModel}" 
+                BackgroundColor="#F4F4F4">
+
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label Text="Your Service Area" FontSize="24" FontAttributes="Bold" TextColor="#0072C6" HorizontalOptions="Center" Margin="0,10,0,10"/>
+            <Label Text="{Binding CustomerZipCode, StringFormat='Zip Code: {0}'}" FontSize="18" FontAttributes="Bold" TextColor="#333" HorizontalOptions="Center"/>
+
+            <Frame BindingContext="{Binding CustomerLocalIncident}" BackgroundColor="White" CornerRadius="12" Padding="25" HasShadow="False" BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="{Binding IncidentId, StringFormat='Incident #{0}'}" FontSize="16" FontAttributes="Bold" TextColor="#333" HorizontalOptions="Center"/>
+                    <Label Text="Are you currently experiencing a power outage at this location?" FontSize="16" TextColor="#333" HorizontalTextAlignment="Center"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
+                        <CheckBox IsChecked="{Binding HasUserVoted, Mode=TwoWay}" Color="#0072C6" Scale="1.5" />
+                        <Label Text="Yes, report an outage" FontSize="16" FontAttributes="Bold" TextColor="#333" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,10,0,0">
+                        <Label Text="{Binding VoteCount}" FontSize="18" FontAttributes="Bold" TextColor="#0072C6"/>
+                        <Label Text="Neighbors have reported this" FontSize="14" TextColor="#666" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <BoxView HeightRequest="1" Color="#E0E0E0" Margin="0,10,0,10"/>
+
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Label Text="ETA: " FontSize="14" FontAttributes="Bold" TextColor="#333"/>
+                        <Label Text="{Binding EstimatedRestoration}" FontSize="14" FontAttributes="Bold" TextColor="#D32F2F"/>
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding ImpactedStreets}" FontSize="12" TextColor="#888" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

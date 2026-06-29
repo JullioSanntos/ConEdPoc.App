@@ -101,6 +101,15 @@
 	  <Compile Update="Views\OutageMenuView.xaml.cs">
 	    <DependentUpon>OutageMenuView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\OutageMenuViews\CheckStatusView.xaml.cs">
+	    <DependentUpon>CheckStatusView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\OutageMenuViews\OutageMapView.xaml.cs">
+	    <DependentUpon>OutageMapView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\OutageMenuViews\ReportOutageView.xaml.cs">
+	    <DependentUpon>ReportOutageView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PayMyBillMenuView.xaml.cs">
 	    <DependentUpon>PayMyBillMenuView.xaml</DependentUpon>
 	  </Compile>
@@ -126,6 +135,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\OutageMenuView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\OutageMenuViews\CheckStatusView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\OutageMenuViews\OutageMapView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\OutageMenuViews\ReportOutageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PayMyBillMenuView.xaml">

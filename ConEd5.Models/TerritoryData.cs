@@ -16,30 +16,35 @@ public static class TerritoryData {
     }
 
     public static List<OutageIncident> GetActiveOutages() {
-        return
-        [ new OutageIncident(
-              IncidentId: 2,
-              Coordinates: new Location(40.84, -73.87),
-              ZipCodes: "10460, 10462",
-              ImpactedStreets: "Bronx Park East, White Plains Rd, Morris Park Ave",
-              EstimatedRestoration: "Today at 6:45 PM"),
-
-          // Manhattan Area
-
-          new OutageIncident(
-              IncidentId: 24,
-              Coordinates: new Location(40.75, -73.98),
-              ZipCodes: "10018, 10001",
-              ImpactedStreets: "W 34th St, W 35th St, 7th Ave to 9th Ave",
-              EstimatedRestoration: "Assessing Condition"),
-
-          // Brooklyn Area
-
-          new OutageIncident(
-              IncidentId: 3,
-              Coordinates: new Location(40.65, -73.95),
-              ZipCodes: "11226, 11203",
-              ImpactedStreets: "Flatbush Ave, Church Ave, Linden Blvd",
-              EstimatedRestoration: "Tomorrow at 10:00 AM") ];
+        return new List<OutageIncident>
+        {
+            new OutageIncident {
+                IncidentId = 2,
+                Coordinates = new Location(40.84, -73.87),
+                ZipCodes = "10460, 10462",
+                ImpactedStreets = "Bronx Park East, White Plains Rd",
+                EstimatedRestoration = "Today at 6:45 PM",
+                IsConfirmed = true,
+                VoteCount = 0
+            },
+            new OutageIncident {
+                IncidentId = 24,
+                Coordinates = new Location(40.75, -73.98),
+                ZipCodes = "10018, 10001",
+                ImpactedStreets = "W 34th St, W 35th St, 7th Ave",
+                EstimatedRestoration = "Assessing Condition",
+                IsConfirmed = false, // UNCONFIRMED REPORT
+                VoteCount = 12       // 12 neighbors agree
+            },
+            new OutageIncident {
+                IncidentId = 3,
+                Coordinates = new Location(40.65, -73.95),
+                ZipCodes = "11226, 11203",
+                ImpactedStreets = "Flatbush Ave, Church Ave",
+                EstimatedRestoration = "Tomorrow at 10:00 AM",
+                IsConfirmed = true,
+                VoteCount = 0
+            }
+        };
     }
 }
